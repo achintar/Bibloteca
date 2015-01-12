@@ -2,16 +2,8 @@ package com.company;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Library {
-
-    /*List<Book> books;
-
-    public Library(Book... books) {
-        this.books = Arrays.asList(books);
-    }*/
 
     ArrayList<Book> myList = new ArrayList<Book>();
 
@@ -26,8 +18,12 @@ public class Library {
     public void showBookList(PrintStream printStream) {
 
         int i;
-        for(i=0;i<myList.size();i++) {
-                printStream.println(myList.get(i).returnBookDetails());
+        String divider = "--------------------------------------------------------------------------------------------------";
+        printStream.printf("%-30s %-25s %-20s %-15s %n","Book_Name","Author","Year","Availability_Status");
+        printStream.println(divider);
+        for (i = 0; i < myList.size(); i++) {
+            Book book = myList.get(i);
+            printStream.printf("%-30s %-25s %-20s %-15s %n", book.getName(), book.getAuthor(), book.getYearOfPublication(), book.getAvailabilityStatus());
             }
         }
 }

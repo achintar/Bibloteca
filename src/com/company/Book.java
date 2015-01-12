@@ -1,6 +1,5 @@
 package com.company;
 
-import java.io.PrintStream;
 
 public class Book {
     public String name;
@@ -15,7 +14,19 @@ public class Book {
         this.availabilityStatus = availabilityStatus;
     }
 
-    public String returnBookDetails() {
-        return (name + "," + author + "," + yearOfPublication + "," + availabilityStatus);
+    public String getName() {
+        return name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getYearOfPublication() {
+        return yearOfPublication;
+    }
+
+    public String getAvailabilityStatus() {
+        return availabilityStatus;
     }
 }
