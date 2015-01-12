@@ -6,6 +6,6 @@ public class Welcome {
 
     public void printMessage(PrintStream printStream)
     {
-        printStream.print("WELCOME");
+        printStream.println("WELCOME");
     }
 }

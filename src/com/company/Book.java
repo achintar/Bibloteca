@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.PrintStream;
+
 public class Book {
     public String name;
     public String author;
@@ -13,8 +15,7 @@ public class Book {
         this.availabilityStatus = availabilityStatus;
     }
 
-    @Override
-    public String toString() {
-        return (name + "," + author + "," + yearOfPublication);
+    public String returnBookDetails() {
+        return (name + "," + author + "," + yearOfPublication + "," + availabilityStatus);
     }
 }

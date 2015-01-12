@@ -9,7 +9,11 @@ public class Main {
 
         new Welcome().printMessage(System.out);
 
-        new Library().showBookList(System.out);
+
+        Library library = new Library();
+        library.getBookList();
+
+        library.showBookList(System.out);
 
     }
 }
