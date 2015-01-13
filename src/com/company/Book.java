@@ -7,12 +7,15 @@ public class Book {
     public String yearOfPublication;
     public String availabilityStatus;
 
-    public Book(String name, String author, String yearOfPublication, String availabilityStatus) {
+
+    public Book(String name, String author, String yearOfPublication, String availabilityStatus){
         this.name = name;
         this.author = author;
         this.yearOfPublication = yearOfPublication;
         this.availabilityStatus = availabilityStatus;
     }
+
+
 
     public String getName() {
         return name;
@@ -28,5 +31,10 @@ public class Book {
 
     public String getAvailabilityStatus() {
         return availabilityStatus;
+    }
+
+
+    public void changeStatus() {
+        this.availabilityStatus = "unavailable";
     }
 }
