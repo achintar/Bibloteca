@@ -12,7 +12,5 @@ public class Main {
         biblotecaApp.listsOptions(System.out);
         biblotecaApp.assignOptionFunctions();
 
-
-
     }
 }

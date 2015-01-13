@@ -15,11 +15,11 @@ public class LibraryTest {
     @Test
     public void shouldCheckLibraryBookListMatch() {
 
-        Book books = new Book("Harry Potter", "Micheal", "1994", "available");
+        Book books = new Book("Harry Potter", "Micheal", "1994");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
         //new Library(books).showBookList(printStream);
-        assertEquals(byteArrayOutputStream.toString(), "Harry Potter,Michael,1994,available");
+        assertEquals(byteArrayOutputStream.toString(), "Harry Potter,Michael,1994");
     }
 
 }
