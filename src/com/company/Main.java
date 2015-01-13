@@ -1,19 +1,18 @@
 package com.company;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        new Welcome().printMessage(System.out);
+        BiblotecaApp biblotecaApp = new BiblotecaApp();
+
+        biblotecaApp.printMessage(System.out);
+        biblotecaApp.listsOptions(System.out);
+        biblotecaApp.assignOptionFunctions();
 
 
-        Library library = new Library();
-        library.getBookList();
-
-        library.showBookList(System.out);
 
     }
 }
