@@ -1,27 +1,31 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Library {
 
-    ArrayList<Book> libraryBookList = new ArrayList<Book>();
-    ArrayList<Book> checkedOutBookList = new ArrayList<Book>();
+    private List<Book> libraryBookList = new ArrayList<Book>();
+    private List<Book> checkedOutBookList = new ArrayList<Book>();
 
-    public void getBookList() {
-        libraryBookList.add(new Book("Black Lotus", "Satyaraj Das", "2007"));
-        libraryBookList.add(new Book("Harry Potter", "J.K Rowling", "1998"));
-        libraryBookList.add(new Book("Journey Home", "Richard Salvin", "2005"));
-        libraryBookList.add(new Book("Let Us C", "Yashwant K", "2010"));
+    private List<Movie> moviesList = new ArrayList<Movie>();
+    private List<Movie> checkedOutMovieList = new ArrayList<Movie>();
+
+    public Library(List<Movie> moviesList, List<Book> libraryBookList){
+
+        this.moviesList = moviesList;
+        this.libraryBookList = libraryBookList;
     }
 
-    public ArrayList<Book> bookList() {
+    public List<Book> bookList() {
         return libraryBookList;
     }
-    public  ArrayList<Book> checkedOutbookList() {
+
+    public  List<Book> checkedOutbookList() {
            return checkedOutBookList;
     }
 
-    public boolean checkOut(String bookName) {
+    public boolean checkOutBook(String bookName) {
         Book foundBook = findBookIn(bookName, libraryBookList);
         if (foundBook == null)
             return false;
@@ -32,7 +36,7 @@ public class Library {
         }
     }
 
-    private Book findBookIn(String bookName, ArrayList<Book> bookList) {
+    private Book findBookIn(String bookName, List<Book> bookList) {
         for (Book book : bookList) {
             if (bookName.equals(book.getName())) {
                 return book;
@@ -40,7 +44,6 @@ public class Library {
         }
         return null;
     }
-
 
     public boolean returnBooks(String bookName) {
         Book foundBook = findBookIn(bookName, checkedOutBookList);
@@ -51,5 +54,33 @@ public class Library {
             checkedOutBookList.remove(foundBook);
             return true;
         }
+    }
+
+    public List<Movie> moviesList() {
+        return moviesList;
+    }
+
+    public  List<Movie> checkOutMovieList() {
+        return checkedOutMovieList;
+    }
+
+    public boolean checkOutMovie(String movieName) {
+        Movie foundMovie = findMovieIn(movieName, moviesList);
+        if (foundMovie == null)
+            return false;
+        else {
+            checkedOutMovieList.add(foundMovie);
+            moviesList.remove(foundMovie);
+            return true;
+        }
+    }
+
+    public Movie findMovieIn(String movieName, List<Movie> movieList) {
+        for (Movie movie : movieList) {
+            if (movieName.equals(movie.getName())) {
+                return movie;
+            }
+        }
+        return null;
     }
 }

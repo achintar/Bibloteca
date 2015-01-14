@@ -21,7 +21,7 @@ public class PrinterTest {
         booklist.add(new Book("Journey Home","Richard Salvin","2005"));
         booklist.add(new Book("Let Us C","Yashwant K","2010"));
 
-        printer.print(booklist, printStream);
+        printer.printBooks(booklist);
 
     }
 

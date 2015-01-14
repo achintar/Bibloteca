@@ -1,22 +1,74 @@
 import com.company.Book;
 import com.company.Library;
 
+import com.company.Movie;
 import org.junit.Test;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
-import static org.testng.AssertJUnit.assertEquals;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.Assert.*;
 
 public class LibraryTest {
 
-    @Test
-    public void shouldCheckLibraryBookListMatch() {
 
-        Book books = new Book("Harry Potter", "Micheal", "1994");
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
-        //new Library(books).showBookList(printStream);
-        assertEquals(byteArrayOutputStream.toString(), "Harry Potter,Michael,1994");
+    @Test
+    public void shouldCheckOutABook() {
+
+
+        List<Book> libraryBookList = new ArrayList<Book>();
+        libraryBookList.add(new Book("Harry Potter", "", ""));
+
+        Library library = new Library(null, libraryBookList);
+
+        String bookName = "Harry Potter";
+
+        boolean status = library.checkOutBook(bookName);
+
+        assertTrue(status);
+        assertThat(library.bookList().size(), is(0));
+        assertThat(library.checkedOutbookList().size(), is(1));
+        assertThat(library.checkedOutbookList().get(0).getName(), is(bookName));
     }
+
+    @Test
+    public void shouldReturnABook() {
+
+        List<Book> libraryBookList = new ArrayList<Book>();
+        libraryBookList.add(new Book("Harry Potter", "", ""));
+
+        Library library = new Library(null, libraryBookList);
+
+        String bookName = "Harry Potter";
+        library.checkOutBook(bookName);
+
+
+        boolean status = library.returnBooks(bookName);
+
+        assertTrue(status);
+        assertThat(library.bookList().size(), is(1));
+        assertThat(library.checkedOutbookList().size(), is(0));
+        assertThat(library.bookList().get(0).getName(), is(bookName));
+
+    }
+
+    @Test
+    public void shouldFindMovie() {
+
+        List<Movie> movieList = new ArrayList<Movie>();
+        movieList.add(new Movie("Harry Potter", "", "", ""));
+
+        Library library = new Library(movieList, null);
+
+
+        assertThat(library.findMovieIn("Harry Potter", movieList).getName(), is("Harry Potter"));
+        assertThat(library.findMovieIn("Jumanji", movieList), is(nullValue()));
+        assertEquals(null, library.findMovieIn("Jumanji", movieList));
+        assertNull(library.findMovieIn("Jumanji", movieList));
+
+    }
+
 
 }

@@ -3,8 +3,7 @@ package com.company;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Printer {
 
@@ -16,10 +15,13 @@ public class Printer {
 
     public void listMenuOptions() {
         System.out.printf("%-15s %-14s %n", "1:", "List Books");
-        System.out.printf("%-15s %-14s %n", "2:", "CheckOut Books");
-        System.out.printf("%-15s %-14s %n", "3:", "Show CheckOut Booklist");
-        System.out.printf("%-15s %-14s %n", "4:", "Return Books");
-        System.out.printf("%-15s %-14s %n", "5:", "Quit");
+        System.out.printf("%-15s %-14s %n", "2:", "List Movies");
+        System.out.printf("%-15s %-14s %n", "3:", "CheckOut Books");
+        System.out.printf("%-15s %-14s %n", "4:", "CheckOut Movies");
+        System.out.printf("%-15s %-14s %n", "5:", "Display CheckOut Book List");
+        System.out.printf("%-15s %-14s %n", "6:", "Display CheckOut Movie List");
+        System.out.printf("%-15s %-14s %n", "7:", "Return Books");
+        System.out.printf("%-15s %-14s %n", "8:", "Quit");
     }
 
     public String askUserInput() throws IOException {
@@ -30,17 +32,17 @@ public class Printer {
         System.out.println("Please Enter A Valid Option");
     }
 
-    public void print(ArrayList<Book> booklist, PrintStream printStream) {
-        printStream.printf("%-30s %-25s %-20s %n", "Book_Name", "Author", "Year");
-        printStream.println("-------------------------------------------------------------------");
+    public void printBooks(List<Book> booklist) {
+        System.out.printf("%-30s %-25s %-20s %n", "Book_Name", "Author", "Year");
+        System.out.println("-------------------------------------------------------------------");
         for (Book book : booklist) {
-            printStream.printf("%-30s %-25s %-20s %n", book.getName(), book.getAuthor(), book.getYearOfPublication());
+            System.out.printf("%-30s %-25s %-20s %n", book.getName(), book.getAuthor(), book.getYearOfPublication());
         }
     }
 
     public String getBookFromUser() throws IOException {
         System.out.println("Please Select The Book");
-        return (bufferedReader.readLine());
+        return (askUserInput());
     }
 
     public void tellUserCheckoutStatus(boolean result) {
@@ -55,5 +57,25 @@ public class Printer {
             System.out.println("Thank You! For Returning The Book");
         else
             System.out.println("That Is Not A Valid Book");
+    }
+
+    public void printMovies(List<Movie> movies){
+        System.out.printf("%-30s %-20s %-15s %-10s %n", "Movie_Name", "Year", "Director", "Ratings");
+        System.out.println("-------------------------------------------------------------------------------------");
+        for (Movie movie : movies) {
+            System.out.printf("%-30s %-20s %-15s %-10s %n", movie.getName(), movie.getYear(), movie.getDirector(), movie.getRatings());
+        }
+    }
+
+    public String getMovieFromUser() throws IOException {
+        System.out.println("Please Select The Movie");
+        return (bufferedReader.readLine());
+    }
+
+    public void tellUserMoiveCheckoutStatus(boolean result) {
+        if(result)
+            System.out.println("Thank You! Enjoy The Movie");
+        else
+            System.out.println("That Movie Is Not Available");
     }
 }
