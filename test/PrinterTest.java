@@ -6,9 +6,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-/**
- * Created by achintar on 13/01/15.
- */
 public class PrinterTest {
 
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

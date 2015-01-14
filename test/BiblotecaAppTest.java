@@ -6,10 +6,6 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by achintar on 10/01/15.
- */
-
 public class BiblotecaAppTest {
 
     @Test
@@ -18,7 +14,7 @@ public class BiblotecaAppTest {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
 
-        new BiblotecaApp().printMessage(printStream);
+        new BiblotecaApp().printMessage();
 
         assertEquals(byteArrayOutputStream.toString(), "WELCOME");
     }

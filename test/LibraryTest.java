@@ -7,9 +7,6 @@ import java.io.PrintStream;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-/**
- * Created by achintar on 10/01/15.
- */
 public class LibraryTest {
 
     @Test
