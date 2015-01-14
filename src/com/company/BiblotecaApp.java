@@ -28,25 +28,33 @@ public class BiblotecaApp {
         Library library = new Library();
         library.getBookList();
 
+        Printer printer = new Printer();
+
         while (!usersChoice.equals("5")) {
 
             if (usersChoice.equals("1")) {
-                library.showBookList(System.out);
+                printer.print(library.bookList(), System.out);
             }
             else if(usersChoice.equals("2")) {
                 System.out.println("Please select book to Check Out:");
                 String selectedBook = bufferedReader.readLine();
 
-                library.checkOut(selectedBook);
+                if(library.checkOut(selectedBook))
+                    System.out.println("Thank You!Enjoy The Book");
+                else
+                    System.out.println("That Book Is Not Available");
             }
             else if(usersChoice.equals("3")) {
-                library.showCheckedOutBookList(System.out);
+                printer.print(library.checkedOutbookList(), System.out);
             }
             else if(usersChoice.equals("4")){
                 System.out.println("Please Choose The Book To Return");
                 String selectedBookToReturn = bufferedReader.readLine();
 
-                library.returnBooks(selectedBookToReturn);
+                if(library.returnBooks(selectedBookToReturn))
+                    System.out.println("Thank You For Returning The Book");
+                else
+                    System.out.println("That Is Not A Valid Book");
             }
             else {
                 System.out.println("Select A Valid Option:");
