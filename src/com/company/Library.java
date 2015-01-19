@@ -6,10 +6,8 @@ import java.util.List;
 public class Library {
 
     private List<Book> libraryBookList = new ArrayList<Book>();
-    private List<Book> checkedOutBookList = new ArrayList<Book>();
-
     private List<Movie> moviesList = new ArrayList<Movie>();
-    private List<Movie> checkedOutMovieList = new ArrayList<Movie>();
+
 
     public Library(List<Movie> moviesList, List<Book> libraryBookList){
 
@@ -21,16 +19,16 @@ public class Library {
         return libraryBookList;
     }
 
-    public  List<Book> checkedOutbookList() {
-           return checkedOutBookList;
+    public  List<Book> displayCheckOutBookList(Customer customer) {
+           return customer.getCheckoutList();
     }
 
-    public boolean checkOutBook(String bookName) {
+    public boolean checkOutBook(String bookName, Customer customer) {
         Book foundBook = findBookIn(bookName, libraryBookList);
         if (foundBook == null)
             return false;
         else {
-            checkedOutBookList.add(foundBook);
+            customer.addBookToCheckoutList(foundBook);
             libraryBookList.remove(foundBook);
             return true;
         }
@@ -45,13 +43,13 @@ public class Library {
         return null;
     }
 
-    public boolean returnBooks(String bookName) {
-        Book foundBook = findBookIn(bookName, checkedOutBookList);
+    public boolean returnBooks(String bookName, Customer customer) {
+        Book foundBook = findBookIn(bookName, customer.getCheckoutList());
         if (foundBook == null)
             return false;
         else {
             libraryBookList.add(foundBook);
-            checkedOutBookList.remove(foundBook);
+            customer.removeBookFromCheckoutList(foundBook);
             return true;
         }
     }
@@ -60,16 +58,16 @@ public class Library {
         return moviesList;
     }
 
-    public  List<Movie> checkOutMovieList() {
-        return checkedOutMovieList;
+    public  List<Movie> displayCheckedOutMovieList(Customer customer) {
+        return customer.getCheckoutMovieList();
     }
 
-    public boolean checkOutMovie(String movieName) {
+    public boolean checkOutMovie(String movieName, Customer customer) {
         Movie foundMovie = findMovieIn(movieName, moviesList);
         if (foundMovie == null)
             return false;
         else {
-            checkedOutMovieList.add(foundMovie);
+            customer.addMovieToCheckoutList(foundMovie);
             moviesList.remove(foundMovie);
             return true;
         }

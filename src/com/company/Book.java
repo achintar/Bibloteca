@@ -13,8 +13,6 @@ public class Book {
         this.yearOfPublication = yearOfPublication;
     }
 
-
-
     public String getName() {
         return name;
     }
@@ -26,5 +24,4 @@ public class Book {
     public String getYearOfPublication() {
         return yearOfPublication;
     }
-
 }

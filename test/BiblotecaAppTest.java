@@ -14,9 +14,9 @@ public class BiblotecaAppTest {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
 
-        new BiblotecaApp().printMessage();
+        new BiblotecaApp().printMessage(printStream);
 
-        assertEquals(byteArrayOutputStream.toString(), "WELCOME");
+        assertEquals("WELCOME", byteArrayOutputStream.toString());
     }
 
 }

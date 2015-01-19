@@ -8,8 +8,7 @@ public class Main {
 
         BiblotecaApp biblotecaApp = new BiblotecaApp();
 
-        biblotecaApp.printMessage();
-        biblotecaApp.listsOptions();
-        biblotecaApp.assignOptionFunctions();
+        biblotecaApp.login();
+
     }
 }

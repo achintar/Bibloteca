@@ -1,16 +1,14 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import java.io.PrintStream;
 import java.util.List;
 
 public class Printer {
 
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-    public void displayWelcome() {
-        System.out.println("WELCOME:");
+    public void displayWelcome(PrintStream printStream) {
+        printStream.println("WELCOME:");
     }
 
     public void listMenuOptions() {
@@ -21,11 +19,8 @@ public class Printer {
         System.out.printf("%-15s %-14s %n", "5:", "Display CheckOut Book List");
         System.out.printf("%-15s %-14s %n", "6:", "Display CheckOut Movie List");
         System.out.printf("%-15s %-14s %n", "7:", "Return Books");
-        System.out.printf("%-15s %-14s %n", "8:", "Quit");
-    }
-
-    public String askUserInput() throws IOException {
-        return (bufferedReader.readLine());
+        System.out.printf("%-15s %-14s %n", "8:", "Display User Info");
+        System.out.printf("%-15s %-14s %n", "9:", "Quit");
     }
 
     public void askUserForValidOption() {
@@ -40,26 +35,14 @@ public class Printer {
         }
     }
 
-    public String getBookFromUser() throws IOException {
-        System.out.println("Please Select The Book");
-        return (askUserInput());
-    }
-
-    public void tellUserCheckoutStatus(boolean result) {
-        if(result)
-            System.out.println("Thank You! Enjoy The Book");
-        else
-            System.out.println("That Book Is Not Available");
-    }
-
     public void tellUserReturnStatus(boolean result) {
-        if(result)
+        if (result)
             System.out.println("Thank You! For Returning The Book");
         else
             System.out.println("That Is Not A Valid Book");
     }
 
-    public void printMovies(List<Movie> movies){
+    public void printMovies(List<Movie> movies) {
         System.out.printf("%-30s %-20s %-15s %-10s %n", "Movie_Name", "Year", "Director", "Ratings");
         System.out.println("-------------------------------------------------------------------------------------");
         for (Movie movie : movies) {
@@ -67,15 +50,14 @@ public class Printer {
         }
     }
 
-    public String getMovieFromUser() throws IOException {
-        System.out.println("Please Select The Movie");
-        return (bufferedReader.readLine());
+    public void displayUserInfo(Customer customer) {
+        System.out.printf("%-30s %-20s %-15s %n", "NAME", "EMAIL", "PHONE-NUMBER");
+        System.out.printf("%-30s %-20s %-15s %n", customer.getName(), customer.getEmail(), customer.getPhone_number());
+
     }
 
-    public void tellUserMoiveCheckoutStatus(boolean result) {
-        if(result)
-            System.out.println("Thank You! Enjoy The Movie");
-        else
-            System.out.println("That Movie Is Not Available");
+    public void listLibrarianMenuOptions() {
+        System.out.printf("%-15s %-14s %n", "1:", "Check Book Info");
+        System.out.printf("%-15s %-14s %n", "2:", "Quit");
     }
 }
